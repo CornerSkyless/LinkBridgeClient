@@ -4,8 +4,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-slides style="height: 150px">
+<ion-content class="bg-f5">
+  <ion-slides class="bg-white" style="height: 150px">
     <ion-slide><img src="../../assets/banner.png" >
     </ion-slide>
     <ion-slide>
@@ -15,11 +15,64 @@
       <h1>Slide 3</h1>
     </ion-slide>
   </ion-slides>
-  <div style="width:100%;margin-top: 15px;">
-    <div class="circle bg-blue item-center" style="width: 80px;height: 80px;padding-top: 10px">
-      <img src="../../assets/zixunLogo.png" style="margin:0 25px;width: 30px;height: 30px">
-      <br>
-      <div style="width: 100%;text-align: center">咨询流程</div>
+  <div class="home-middle bg-white pt-sm pb-lg" >
+    <div style="width:100%;z-index: 10;position: relative;">
+      <div class="circle bg-blue item-center circle-button">
+        <img src="../../assets/zixunLogo.png">
+        <div style="width: 100%;text-align: center">咨询流程</div>
+      </div>
+    </div>
+    <div text-center style="width: 100%;margin-top: -50px;z-index: -5">
+      <div class="bg-green square-button"  >
+        <div style="position: absolute;left: 10px;top:20px;align-items: center;display: flex">
+          <img src="../../assets/anzhuangIcon.png" >
+          <span class="ml-sm">安装流程</span>
+        </div>
+
+      </div>
+      <div class="bg-orange square-button" >
+        <div style="position: absolute;right: 10px;top:20px;align-items: center;display: flex">
+          <span class="mr-sm">维修流程</span>
+          <img src="../../assets/weixiuLogo.png" >
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home-order across mt-sm bg-white">
+    <div text-center class="across  pt-sm" style="font-size: 16px">订单管理</div>
+    <img src="../../assets/duobianxin.png" style="width: 100%;">
+    <div class="across pt-sm" text-center>
+      <div class="inline-block mr-lg">
+        <div class="bg-blue button" style="background-color: #7c6abe">
+          <img src="../../assets/xinjiandindan.png">
+        </div>
+        <div class="label">新建订单</div>
+      </div>
+      <div class="inline-block ml-lg mr-lg">
+        <div class="bg-blue button" style="background-color: #27ada5">
+          <img src="../../assets/dindanzhuizong.png">
+        </div><br>
+        <div class="label">订单追踪</div>
+      </div>
+      <div class="inline-block ml-lg">
+        <div class="bg-blue button" style="background-color: #1498c6">
+          <img src="../../assets/fuwupinjia.png">
+        </div><br>
+        <div class="label">服务评价</div>
+      </div>
+
+    </div>
+  </div>
+  <div text-center class="home-bottom across mt-sm mb-sm">
+    <div class="inline-block bg-white button">
+      <img src="../../assets/dianhua.png">
+      <span>电话报修</span>
+    </div>
+    <div class="inline-block" style="width: 2%"></div>
+    <div class="inline-block bg-white button">
+      <img src="../../assets/hudong.png">
+      <span>微信互动</span>
     </div>
   </div>
 </ion-content>

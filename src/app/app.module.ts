@@ -8,6 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { FlowPathPage } from '../pages/flowPath/flowPath';
 import { UserPage } from '../pages/user/user';
 import { LoginPage } from '../pages/login/login';
+import { OrderListPage } from '../pages/orderList/orderList';
 import { DataService } from '../service/data.service'
 import { NotificationService } from '../service/notification.service'
 @NgModule({
@@ -19,7 +20,8 @@ import { NotificationService } from '../service/notification.service'
     TabsPage,
     FlowPathPage,
     UserPage,
-    LoginPage
+    LoginPage,
+    OrderListPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -33,7 +35,8 @@ import { NotificationService } from '../service/notification.service'
     TabsPage,
     FlowPathPage,
     UserPage,
-    LoginPage
+    LoginPage,
+    OrderListPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

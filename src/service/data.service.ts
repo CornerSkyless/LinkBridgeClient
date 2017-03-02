@@ -37,20 +37,15 @@ class DataService {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       form.method = method;
+      form.user = this.currentUser;
       this.http.post(backHost, JSON.stringify(form), {headers:headers})
         .map((res:Response) => res.json())
         .subscribe(
           response => {
             if(response){
-              if(response.result){
-                resolve(response);
-              }else {
-                reject(response.errorInfo);
-              }
-            }else {
-              reject('未返回数据');
-            }
-
+              if(response.result) resolve(response);
+              else  reject(response.errorInfo);
+            }else reject('未返回数据');
           },
           err => reject(err),
         )

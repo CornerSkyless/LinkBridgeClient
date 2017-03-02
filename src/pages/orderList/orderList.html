@@ -1,0 +1,37 @@
+<ion-header >
+  <ion-navbar >
+    <ion-title>
+      {{title}}列表
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="getOrderList()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content  class="outer-content">
+<div *ngIf="!isDoing.queryOrderList">
+  <ion-card *ngFor="let order of orderList" tappable (click)="showOrderDetail(order.order_id)">
+    <ion-card-header>
+      <span style="float: left">{{order.device_name}}</span>
+      <ion-badge style="float: right">状态: {{order.order_status}}</ion-badge>
+
+    </ion-card-header>
+    <ion-card-content>
+      <p>订单号: {{order.order_id}}</p>
+      <p>使用科室: {{order.device_department}}</p>
+      <p>下单时间: {{order.order_filled_time}}</p>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-grid *ngIf="orderList.length==0" padding-top>
+    <ion-row>
+      <ion-col width-100 text-center>暂无订单</ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+
+
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{viewContent[serviceType].title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="bg-f5">
+  <img [src]="viewContent[serviceType].bannerImg" class="across">
+  <div *ngFor="let step of viewContent[serviceType].steps;let i = index" class="across step-box">
+    <div class="step"><div>Step {{i+1}}</div></div>
+    <div class="content">
+      <img [src]="step.imgUrl" >
+      <div style="margin-left: 20px">
+        <span style="font-size: 14px">{{step.title}}</span><br>
+        <span *ngFor="let detail of step.details" style="font-size: 10px;color: #888">· {{detail}} <br></span>
+      </div>
+    </div>
+  </div>
+</ion-content>

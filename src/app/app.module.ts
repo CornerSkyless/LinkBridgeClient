@@ -9,6 +9,9 @@ import { FlowPathPage } from '../pages/flowPath/flowPath';
 import { UserPage } from '../pages/user/user';
 import { LoginPage } from '../pages/login/login';
 import { OrderListPage } from '../pages/orderList/orderList';
+import { OrderDetailPage } from '../pages/orderDetail/orderDetail';
+import { OrderDetailDirective } from '../pages/directive/orderDetailDirective';
+import { DeviceDetailDirective } from '../pages/directive/deviceDetailDirective';
 import { DataService } from '../service/data.service'
 import { NotificationService } from '../service/notification.service'
 @NgModule({
@@ -21,7 +24,10 @@ import { NotificationService } from '../service/notification.service'
     FlowPathPage,
     UserPage,
     LoginPage,
-    OrderListPage
+    OrderListPage,
+    OrderDetailPage,
+    OrderDetailDirective,
+    DeviceDetailDirective
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -36,7 +42,10 @@ import { NotificationService } from '../service/notification.service'
     FlowPathPage,
     UserPage,
     LoginPage,
-    OrderListPage
+    OrderListPage,
+    OrderDetailPage,
+    OrderDetailDirective,
+    DeviceDetailDirective
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

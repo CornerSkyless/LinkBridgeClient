@@ -1,0 +1,27 @@
+<div  *ngIf="device">
+  <ion-list no-border>
+    <ion-list-header>设备信息</ion-list-header>
+    <ion-item >设备序列号<ion-note item-right >{{device.device_id}}</ion-note></ion-item>
+    <ion-item >设备类别<ion-note item-right >{{device.device_category}}</ion-note></ion-item>
+    <ion-item >设备名称<ion-note item-right >{{device.device_name}}</ion-note></ion-item>
+    <ion-item >设备质保开始时间<ion-note item-right >{{device.device_life_begin_date}}</ion-note></ion-item>
+    <ion-item >设备使用科室名称<ion-note item-right >{{device.device_department}}</ion-note></ion-item>
+    <ion-item >设备使用科室联系人<ion-note item-right >{{device.device_department_contact_name}}</ion-note></ion-item>
+    <ion-item >联系人电话<ion-note item-right >{{device.device_department_contact_tel}}</ion-note></ion-item>
+
+  </ion-list>
+  <ion-list no-border>
+    <ion-list-header>医院信息</ion-list-header>
+    <ion-item>医院名称<ion-note item-right >{{device.device_hospital_name}}</ion-note></ion-item>
+    <ion-item (click)="showDetail(getFullHospitalAddress())">医院地址<ion-note item-right>显示详情</ion-note></ion-item>
+    <ion-item>设备科联系人<ion-note item-right>{{device.device_hospital_device_contact_name}}</ion-note></ion-item>
+    <ion-item>联系人电话<ion-note item-right >{{device.device_hospital_device_contact_tel}}</ion-note></ion-item>
+  </ion-list>
+  <ion-list no-border>
+    <ion-list-header>工厂信息</ion-list-header>
+    <ion-item>工厂名称<ion-note item-right >{{device.device_factory_name}}</ion-note></ion-item>
+    <ion-item (click)="showDetail(getFullFactoryAddress())">工厂地址<ion-note item-right >显示详情</ion-note></ion-item>
+    <ion-item>设备联系人<ion-note item-right >{{device.device_factory_contact_name}}</ion-note></ion-item>
+    <ion-item>联系人电话<ion-note item-right >{{device.device_factory_contact_tel}}</ion-note></ion-item>
+  </ion-list>
+</div>

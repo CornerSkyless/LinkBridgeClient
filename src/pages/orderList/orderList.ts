@@ -5,6 +5,7 @@ import { Component , OnInit, OnChanges , Input } from '@angular/core';
 import { NavController , ModalController , NavParams  } from 'ionic-angular';
 import { DataService , Res } from '../../service/data.service';
 import { NotificationService } from '../../service/notification.service';
+import { OrderDetailPage } from '../orderDetail/orderDetail'
 
 @Component({
   selector: 'order-list',
@@ -104,8 +105,6 @@ export class OrderListPage implements OnInit {
   }
 
   showOrderDetail(order_id:string){
-    // this.navCtrl.push(OrderDetailPage,{order_id:order_id})
-    //   .catch(()=> console.log('should I stay or should I go now'));
-    console.log(order_id);
+    this.navCtrl.push(OrderDetailPage,{order_id:order_id})
   }
 }

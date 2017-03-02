@@ -16,21 +16,21 @@
     </ion-slide>
   </ion-slides>
   <div class="home-middle bg-white pt-sm pb-lg" >
-    <div style="width:100%;z-index: 10;position: relative;">
-      <div class="circle bg-blue item-center circle-button">
+    <!--<div style="width:100%;z-index: 10;position: relative;">-->
+      <div style="z-index: 10;position: relative;" tappable (click)="clickOnService('technicalConsulting')"  class="circle bg-blue item-center circle-button">
         <img src="../../assets/zixunLogo.png">
         <div style="width: 100%;text-align: center">咨询流程</div>
       </div>
-    </div>
+    <!--</div>-->
     <div text-center style="width: 100%;margin-top: -50px;z-index: -5">
-      <div class="bg-green square-button"  >
+      <div tappable (click)="clickOnService('homeInstallation');$event.stopPropagation();" class="bg-green square-button"  >
         <div style="position: absolute;left: 10px;top:20px;align-items: center;display: flex">
           <img src="../../assets/anzhuangIcon.png" >
           <span class="ml-sm">安装流程</span>
         </div>
 
       </div>
-      <div class="bg-orange square-button" >
+      <div tappable (click)="clickOnService('equipmentMaintenance')" class="bg-orange square-button" >
         <div style="position: absolute;right: 10px;top:20px;align-items: center;display: flex">
           <span class="mr-sm">维修流程</span>
           <img src="../../assets/weixiuLogo.png" >

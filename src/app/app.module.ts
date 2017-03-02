@@ -6,7 +6,10 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FlowPathPage } from '../pages/flowPath/flowPath';
-
+import { UserPage } from '../pages/user/user';
+import { LoginPage } from '../pages/login/login';
+import { DataService } from '../service/data.service'
+import { NotificationService } from '../service/notification.service'
 @NgModule({
   declarations: [
     MyApp,
@@ -14,7 +17,9 @@ import { FlowPathPage } from '../pages/flowPath/flowPath';
     ContactPage,
     HomePage,
     TabsPage,
-    FlowPathPage
+    FlowPathPage,
+    UserPage,
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -26,8 +31,13 @@ import { FlowPathPage } from '../pages/flowPath/flowPath';
     ContactPage,
     HomePage,
     TabsPage,
-    FlowPathPage
+    FlowPathPage,
+    UserPage,
+    LoginPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataService,NotificationService
+  ]
 })
 export class AppModule {}

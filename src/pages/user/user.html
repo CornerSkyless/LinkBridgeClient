@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      个人中心
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-f5">
+  <div *ngIf="dataService.isLogin">
+    <ion-list>
+      <ion-list-header>当前用户</ion-list-header>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="https://dn-g8uubbt6.qbox.me/0b07ce212fe3cbed5dd2.png">
+        </ion-avatar>
+        <h2>{{dataService.currentUser.user_name}}</h2>
+        <p>UID: {{dataService.currentUser.user_id}}</p>
+      </ion-item>
+    </ion-list>
+    <div padding-horizontal>
+      <button (click)="dataService.logout()" type="button" ion-button color="danger" block>退出当前账号</button>
+    </div>
+  </div>
+  <div *ngIf="!dataService.isLogin">
+    <ion-list>
+      <ion-list-header>你还没有登录</ion-list-header>
+    </ion-list>
+    <div padding-horizontal>
+      <button (click)="login()" type="button" ion-button color="primary" block>立即登录</button>
+    </div>
+  </div>
+</ion-content>

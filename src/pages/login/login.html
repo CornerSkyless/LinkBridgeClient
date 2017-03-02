@@ -1,0 +1,20 @@
+<ion-content>
+  <img src="../../assets/loginBanner.jpg" >
+  <div padding style="margin-top: -30px;">
+    <ion-item>
+      <ion-label floating>用户名</ion-label>
+      <ion-input name="user_account" [(ngModel)]="loginForm.user_account" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>密码</ion-label>
+      <ion-input name="user_password" [(ngModel)]="loginForm.user_password" type="password"></ion-input>
+    </ion-item>
+    <div class="across mt-sm" text-right>
+      <span tappable (click)="needHelp()" class="text-muted">忘记密码</span>
+    </div>
+    <button [disabled]="isDoing.login" (click)="login()" type="submit" ion-button color="primary" block>登录</button>
+
+  </div>
+
+</ion-content>

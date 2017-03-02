@@ -3,7 +3,7 @@
  */
 import { Component , OnInit} from '@angular/core';
 
-import { NavController , NavParams } from 'ionic-angular';
+import { NavController , NavParams, ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-flow-path',
@@ -141,10 +141,16 @@ export class FlowPathPage implements OnInit{
     },
   };
   ngOnInit(){
-
+    this.serviceType = this.navParams.get('serviceType');
   }
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl:ViewController
 
+  ) {}
+
+  dismiss() {
+    this.viewCtrl.dismiss(false);
   }
-
 }

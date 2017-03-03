@@ -14,7 +14,7 @@ export class NotificationService{
     public loadingCtrl: LoadingController
   ){}
 
-  presentToast() {
+  presentToast(message) {
     let toast = this.toastCtrl.create({
       message: 'User was added successfully',
       duration: 3000

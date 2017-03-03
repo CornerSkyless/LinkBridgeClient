@@ -67,16 +67,27 @@ export class NewOrderPage implements OnInit{
   }
 
   importDevice(){
-    let modal = this.modalCtrl.create(ImportDevicePage,{noShowSuccess:true});
-    modal.showBackButton(true);
-    modal.onDidDismiss(res => {
-      if(res){
-        this.getDeviceInfo(res);
-      }else {
-        console.log('Nothing happened');
-      }
-    });
-    modal.present();
+    if(this.dataService.isFilledData){
+      let modal = this.modalCtrl.create(ImportDevicePage,{noShowSuccess:true});
+
+      modal.showBackButton(true);
+      modal.onDidDismiss(res => {
+        if(res){
+          this.getDeviceInfo(res);
+        }else {
+          console.log('Nothing happened');
+        }
+      });
+      modal.present();
+    }else {
+      let confirm = this.alertCtrl.create({
+        title: '您需要补全信息后操作',
+        message: '请等待工作人员补全信息',
+        buttons: [{text: '取消'}, {text: '确认'}]
+      });
+      confirm.present();
+    }
+
   }
 
   getDeviceInfo(device_id){

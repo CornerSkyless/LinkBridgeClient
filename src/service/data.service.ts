@@ -6,8 +6,15 @@ import { Http , Response , Headers } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+const urls = {
+  'A029401':'192.168.3.114/',
+  'testServer':'114.55.136.29/Local-',
+  'linkServer':'114.55.233.103/',
+  'office':'192.168.199.175/'
+};
+const url = urls['office'];
 
-const backHost = "http://114.55.136.29/Local-LinkBridgeMed-Api/index.php";
+const backHost = 'http://' +url+ 'LinkBridgeMed-Api/index.php';
 
 class Res{
   data:any;
@@ -61,6 +68,7 @@ class DataService {
   }
   currentUser:UserInfo;
   isLogin = false;
+  isFilledData = false;
   request = function (method,form) {
     return new Promise((resolve,reject)=>{
       let headers = new Headers();

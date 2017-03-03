@@ -8,6 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { FlowPathPage } from '../pages/flowPath/flowPath';
 import { UserPage } from '../pages/user/user';
 import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 import { OrderListPage } from '../pages/orderList/orderList';
 import { OrderDetailPage } from '../pages/orderDetail/orderDetail';
 import { NewOrderPage } from '../pages/newOrder/newOrder';
@@ -35,7 +36,7 @@ import { NotificationService } from '../service/notification.service'
     OrderDetailDirective,
     DeviceDetailDirective,
     ImportDeviceFormDirective,
-    AddressSelect,DeviceCategorySelect
+    AddressSelect,DeviceCategorySelect,RegisterPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -56,7 +57,7 @@ import { NotificationService } from '../service/notification.service'
     NewOrderPage,ImportDevicePage,
     DeviceDetailDirective,
     ImportDeviceFormDirective,
-    AddressSelect,DeviceCategorySelect
+    AddressSelect,DeviceCategorySelect,RegisterPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

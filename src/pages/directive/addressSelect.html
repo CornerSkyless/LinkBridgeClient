@@ -1,0 +1,39 @@
+<div *ngIf="!disabled">
+  <ion-item>
+    <ion-label stacked>省/直辖市</ion-label>
+    <ion-select  (ionChange)="selectProvince()" cancelText="取消" okText="确认" [(ngModel)]="province" >
+      <ion-option *ngFor="let value of provinceList" [value]="value.name" >{{value.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>市/市辖区</ion-label>
+    <ion-select  (ionChange)="selectCity()"  [disabled]="!province" cancelText="取消" okText="确认" [(ngModel)]="city">
+      <ion-option *ngFor="let value of cityList" [value]="value.name" >{{value.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>县/区</ion-label>
+    <ion-select  (ionChange)="change()"  [disabled]="!city" cancelText="取消" okText="确认" [(ngModel)]="county">
+      <ion-option *ngFor="let value of countyList" [value]="value.name" >{{value.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+</div>
+<div *ngIf="disabled">
+  <ion-item>
+    <ion-label stacked>省/直辖市</ion-label>
+    <ion-input [disabled]="disabled" name="province" [(ngModel)]="province"  type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>市/市辖区</ion-label>
+    <ion-input [disabled]="disabled" name="city" [(ngModel)]="city"  type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>县/区</ion-label>
+    <ion-input [disabled]="disabled" name="county" [(ngModel)]="county"  type="text"></ion-input>
+  </ion-item>
+</div>
+
+<ion-item>
+  <ion-label stacked>详细地址</ion-label>
+  <ion-input [disabled]="disabled" (change)="change()" name="address" [(ngModel)]="address"  type="text"></ion-input>
+</ion-item>

@@ -3,7 +3,10 @@
  */
 import { Component , OnInit} from '@angular/core';
 
-import { NavController , NavParams, ViewController } from 'ionic-angular';
+import { NavController , NavParams, ViewController, ModalController, AlertController } from 'ionic-angular';
+import { NewOrderPage } from '../newOrder/newOrder'
+import { DataService } from '../../service/data.service'
+import { LoginPage } from '../login/login'
 
 @Component({
   selector: 'page-flow-path',
@@ -49,7 +52,9 @@ export class FlowPathPage implements OnInit{
           ]
         },
 
-      ]
+      ],
+      buttonText:"咨询申请",
+      type:"咨询服务"
     },
     equipmentMaintenance:{
       title:'设备维修',
@@ -93,7 +98,9 @@ export class FlowPathPage implements OnInit{
             "确认服务清单"
           ]
         }
-      ]
+      ],
+      buttonText:"维修申请",
+      type:"设备维修"
     },
     homeInstallation:{
       title:'上门安装',
@@ -137,7 +144,9 @@ export class FlowPathPage implements OnInit{
             "确认服务清单"
           ]
         }
-      ]
+      ],
+      buttonText:"安装申请",
+      type:"上门安装"
     },
   };
   ngOnInit(){
@@ -146,11 +155,40 @@ export class FlowPathPage implements OnInit{
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public viewCtrl:ViewController
+    public viewCtrl:ViewController,
+    public dataService: DataService,
+    public alertCtrl: AlertController,
+
+    public modalCtrl: ModalController,
+
 
   ) {}
 
   dismiss() {
     this.viewCtrl.dismiss(false);
+  }
+
+  newOrder(){
+    if(this.dataService.isLogin){
+      let modal = this.modalCtrl.create(NewOrderPage,{serviceType:this.viewContent[this.serviceType].type});
+      modal.showBackButton(true);
+      modal.present();
+    }else {
+      let confirm = this.alertCtrl.create({
+        title: '您需要登录后操作',
+        message: '是否前往登录页面',
+        buttons: [{text: '取消'},
+          {
+            text: '去登陆',
+            handler: () => {
+              let modal = this.modalCtrl.create(LoginPage,{});
+              modal.showBackButton(true);
+              modal.present();
+            }
+          }
+        ]
+      });
+      confirm.present();
+    }
   }
 }

@@ -10,8 +10,13 @@ import { UserPage } from '../pages/user/user';
 import { LoginPage } from '../pages/login/login';
 import { OrderListPage } from '../pages/orderList/orderList';
 import { OrderDetailPage } from '../pages/orderDetail/orderDetail';
+import { NewOrderPage } from '../pages/newOrder/newOrder';
+import { ImportDevicePage } from '../pages/importDevice/importDevice';
 import { OrderDetailDirective } from '../pages/directive/orderDetailDirective';
 import { DeviceDetailDirective } from '../pages/directive/deviceDetailDirective';
+import { ImportDeviceFormDirective } from '../pages/directive/importDeviceForm';
+import { AddressSelect } from '../pages/directive/addressSelect';
+import { DeviceCategorySelect } from '../pages/directive/deviceCategorySelect';
 import { DataService } from '../service/data.service'
 import { NotificationService } from '../service/notification.service'
 @NgModule({
@@ -26,8 +31,11 @@ import { NotificationService } from '../service/notification.service'
     LoginPage,
     OrderListPage,
     OrderDetailPage,
+    NewOrderPage,ImportDevicePage,
     OrderDetailDirective,
-    DeviceDetailDirective
+    DeviceDetailDirective,
+    ImportDeviceFormDirective,
+    AddressSelect,DeviceCategorySelect
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -45,7 +53,10 @@ import { NotificationService } from '../service/notification.service'
     OrderListPage,
     OrderDetailPage,
     OrderDetailDirective,
-    DeviceDetailDirective
+    NewOrderPage,ImportDevicePage,
+    DeviceDetailDirective,
+    ImportDeviceFormDirective,
+    AddressSelect,DeviceCategorySelect
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

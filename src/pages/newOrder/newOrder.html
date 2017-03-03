@@ -1,0 +1,37 @@
+<ion-header >
+  <ion-navbar >
+    <ion-title>
+      新建订单
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">返回</span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="outer-content">
+  <ion-list no-border *ngIf="!selectedDevice">
+    <ion-list-header>设备信息</ion-list-header>
+    <button ion-item (click)="inputDeviceId()">输入设备序列号</button>
+    <button ion-item (click)="importDevice()">新增设备</button>
+  </ion-list>
+  <device-detail *ngIf="selectedDevice" [device]="device"></device-detail>
+  <ion-list no-border>
+    <ion-item>
+      <ion-label stacked>服务类型</ion-label>
+      <ion-select cancelText="取消" okText="确认" [(ngModel)]="form.order_service_type">
+        <ion-option [value]="'设备维修'" >设备维修</ion-option>
+        <ion-option [value]="'上门安装'" >上门安装</ion-option>
+        <ion-option [value]="'咨询服务'" >咨询服务</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>备注</ion-label>
+      <ion-input name="order_broken_detail" [(ngModel)]="form.order_broken_detail"  type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button type="button" [disabled]="isSubmitting || !selectedDevice" ion-button color="primary" (click)="submit()"  block>确认下单</button>
+  </div>
+</ion-content>

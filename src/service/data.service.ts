@@ -24,7 +24,36 @@ class UserInfo{
   user_type:string;
   uuid:string;
 }
-
+class NewOrderForm{
+  order_broken_detail="";
+  order_device_id="";
+  order_service_type="";
+}
+class ImportDeviceForm{
+  device_category="";
+  device_department="";
+  device_department_contact_name="";
+  device_department_contact_tel="";
+  device_factory_contact_name="";
+  device_factory_contact_tel="";
+  device_factory_name="";
+  device_factory_region_address="";
+  device_factory_region_city="";
+  device_factory_region_county="";
+  device_factory_region_province="";
+  device_hospital_device_contact_name="";
+  device_hospital_device_contact_tel="";
+  device_hospital_name="";
+  device_hospital_region_address="";
+  device_hospital_region_city="";
+  device_hospital_region_county="";
+  device_hospital_region_province="";
+  device_id="";
+  device_life_begin_date="";
+  device_life_last="";
+  device_model="";
+  device_name="";
+}
 @Injectable()
 class DataService {
   constructor(
@@ -58,4 +87,4 @@ class DataService {
 
 
 }
-export {DataService,Res}
+export {DataService,Res,NewOrderForm,ImportDeviceForm}

@@ -4,6 +4,7 @@ import { NavController, ModalController, ActionSheetController, AlertController 
 
 import { FlowPathPage } from '../flowPath/flowPath'
 import { OrderListPage } from '../orderList/orderList'
+import { NewOrderPage } from '../newOrder/newOrder'
 import { LoginPage } from '../login/login'
 import { DataService } from '../../service/data.service'
 
@@ -66,6 +67,31 @@ export class HomePage {
       confirm.present();
     }
 
+
+  }
+
+  clickOnNewOrder(){
+    if(this.dataService.isLogin){
+      let modal = this.modalCtrl.create(NewOrderPage,{serviceType:'设备维修'});
+      modal.showBackButton(true);
+      modal.present();
+    }else {
+      let confirm = this.alertCtrl.create({
+        title: '您需要登录后操作',
+        message: '是否前往登录页面',
+        buttons: [{text: '取消'},
+          {
+            text: '去登陆',
+            handler: () => {
+              let modal = this.modalCtrl.create(LoginPage,{});
+              modal.showBackButton(true);
+              modal.present();
+            }
+          }
+        ]
+      });
+      confirm.present();
+    }
 
   }
 }

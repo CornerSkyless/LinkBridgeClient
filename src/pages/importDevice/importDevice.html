@@ -1,0 +1,16 @@
+<ion-header >
+  <ion-navbar >
+
+    <ion-title>
+      录入新设备
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">返回</span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="outer-content">
+  <import-device-form (submitEvent)="submit($event)" (errorEvent)="dismiss()" [isSubmitting]="isDoing.submit" ></import-device-form>
+</ion-content>

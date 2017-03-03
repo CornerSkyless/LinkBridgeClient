@@ -1,0 +1,92 @@
+<div padding *ngIf="!updateMode">
+  <button type="button" [disabled]="isSubmitting" ion-button outline (click)="withImport()"  block>携增</button>
+</div>
+
+<ion-list no-border>
+  <ion-list-header>设备信息</ion-list-header>
+  <ion-item *ngIf="!updateMode" >
+    <ion-label stacked>设备序列号</ion-label>
+    <ion-input name="device_id" [(ngModel)]="form.device_id" type="text"></ion-input>
+    <button (click)="makeRandomId()" ion-button outline item-right>随机生成</button>
+  </ion-item>
+  <ion-item *ngIf="updateMode" >
+    <ion-label stacked>设备序列号(天)</ion-label>
+    <ion-input disabled="true" name="device_id" [(ngModel)]="form.device_id" type="text"></ion-input>  </ion-item>
+  <ion-item>
+    <ion-label stacked>质保期(天)</ion-label>
+    <ion-input name="device_life_last" [(ngModel)]="form.device_life_last"  type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>质保开始时间</ion-label>
+    <ion-datetime  name="device_life_begin_date" [(ngModel)]="form.device_life_begin_date"  displayFormat="YYYY年MM月DD日" pickerFormat="YYYY/MM/DD" ></ion-datetime>
+  </ion-item>
+
+  <device-category-select [(deviceCategory)]="form.device_category" [(deviceName)]="form.device_name"></device-category-select>
+
+  <ion-item>
+    <ion-label stacked>设备型号</ion-label>
+    <ion-input name="device_model" [(ngModel)]="form.device_model"  type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>设备使用科室名称</ion-label>
+    <ion-input name="device_department" [(ngModel)]="form.device_department"  type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>设备使用科室联系人</ion-label>
+    <ion-input name="device_department_contact_name" [(ngModel)]="form.device_department_contact_name"  type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>联系人电话</ion-label>
+    <ion-input name="device_department_contact_tel" [(ngModel)]="form.device_department_contact_tel"  type="text"></ion-input>
+  </ion-item>
+</ion-list>
+<ion-list no-border>
+  <ion-list-header>医院信息</ion-list-header>
+  <ion-item>
+    <ion-label stacked>医院名称</ion-label>
+    <ion-input [disabled]="disableHospital"  name="device_hospital_name" [(ngModel)]="form.device_hospital_name"  type="text"></ion-input>
+  </ion-item>
+  <address-select
+    [(province)]="form.device_hospital_region_province"
+    [(city)]="form.device_hospital_region_city"
+    [(county)]="form.device_hospital_region_county"
+    [(address)]="form.device_hospital_region_address"
+    [disabled]="disableHospital"
+  ></address-select>
+  <ion-item>
+    <ion-label stacked>设备科联系人</ion-label>
+    <ion-input [disabled]="disableHospital" name="device_hospital_device_contact_name" [(ngModel)]="form.device_hospital_device_contact_name"  type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>联系人电话</ion-label>
+    <ion-input [disabled]="disableHospital" name="device_hospital_device_contact_tel" [(ngModel)]="form.device_hospital_device_contact_tel"  type="text"></ion-input>
+  </ion-item>
+</ion-list>
+<ion-list no-border>
+  <ion-list-header>工厂信息</ion-list-header>
+  <ion-item>
+    <ion-label stacked>工厂名称</ion-label>
+    <ion-input [disabled]="disableFactory" name="device_factory_name" [(ngModel)]="form.device_factory_name"  type="text"></ion-input>
+  </ion-item>
+  <address-select
+    [(province)]="form.device_factory_region_province"
+    [(city)]="form.device_factory_region_city"
+    [(county)]="form.device_factory_region_county"
+    [(address)]="form.device_factory_region_address"
+    [disabled]="disableFactory"
+  ></address-select>
+  <ion-item>
+    <ion-label stacked>设备联系人</ion-label>
+    <ion-input [disabled]="disableFactory" name="device_factory_device_contact_name" [(ngModel)]="form.device_factory_contact_name"  type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>联系人电话</ion-label>
+    <ion-input [disabled]="disableFactory" name="device_factory_device_contact_tel" [(ngModel)]="form.device_factory_contact_tel"  type="text"></ion-input>
+  </ion-item>
+</ion-list>
+
+<div padding>
+  <button type="button" [disabled]="isSubmitting" ion-button color="primary" (click)="submit()"  block>确认录入</button>
+</div>
+
+

@@ -55,6 +55,9 @@ export class OrderDetailDirective implements OnChanges{
     console.log(this.orderStatus);
   }
 
+  showDetail(text:string){
+    this.notificationService.showBasicAlert('',text);
+  }
 
 
 }

@@ -17,6 +17,12 @@
     <ion-list-header>备注/情况说明</ion-list-header>
     <ion-item ><ion-note text-wrap>{{order.order_broken_detail}}</ion-note></ion-item>
   </ion-list>
+  <ion-list no-border *ngIf="order.order_comment">
+    <ion-list-header>服务评价</ion-list-header>
+    <ion-item >星级<ion-note item-right>{{order.order_rank}}</ion-note></ion-item>
+    <ion-item (click)="showDetail(order.order_comment)">评价<ion-note item-right>显示详情</ion-note></ion-item>
+  </ion-list>
+
   <!--<ion-list no-border *ngIf="order.order_status=='被撤销'">-->
   <!--<ion-list-header>拒绝原因</ion-list-header>-->
   <!--<ion-item ><ion-note text-wrap>{{order.}}</ion-note></ion-item>-->

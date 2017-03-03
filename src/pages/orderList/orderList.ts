@@ -14,6 +14,10 @@ import { OrderDetailPage } from '../orderDetail/orderDetail'
 export class OrderListPage implements OnInit {
   listType:string;
   titles = {
+    "orderWaitComment":{
+      method:"listOrderWaitComment",
+      title:"未评价的订单"
+    },
     "goingOrder":{
       method:"listGoingOrder",
       title:"进行中订单"

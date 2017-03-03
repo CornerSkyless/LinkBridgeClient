@@ -7,6 +7,7 @@ import { NavController , NavParams , ModalController } from 'ionic-angular';
 
 import { DataService, Res } from '../../service/data.service';
 import { NotificationService } from '../../service/notification.service';
+import { CommentPage } from '../comment/comment'
 
 const checkTime = function(time:string) {
   if(time){
@@ -85,5 +86,10 @@ export class OrderDetailPage implements OnInit{
       })
   }
 
+  comment(){
+    let modal = this.modalCtrl.create(CommentPage,{order_id:this.order.order_id});
+    modal.showBackButton(true);
+    modal.present();
+  }
 
 }

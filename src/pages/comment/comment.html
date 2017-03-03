@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-navbar >
+    <ion-title>
+      填写评价
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">返回</span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <div padding>
+    <ion-item>
+      <ion-label stacked>星级</ion-label>
+      <ion-select cancelText="取消" okText="确认" [(ngModel)]="form.order_rank">
+        <ion-option [value]="1" >1星</ion-option>
+        <ion-option [value]="2" >2星</ion-option>
+        <ion-option [value]="3" >3星</ion-option>
+        <ion-option [value]="4" >4星</ion-option>
+        <ion-option [value]="5" >5星</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>评价</ion-label>
+      <ion-input name="user_account" [(ngModel)]="form.order_comment" type="text"></ion-input>
+    </ion-item>
+
+
+    <button [disabled]="isDoing.comment" (click)="comment()" type="submit" ion-button color="primary" block>提交评价</button>
+
+  </div>
+
+</ion-content>

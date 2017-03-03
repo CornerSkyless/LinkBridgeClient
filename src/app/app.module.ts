@@ -12,6 +12,7 @@ import { RegisterPage } from '../pages/register/register';
 import { OrderListPage } from '../pages/orderList/orderList';
 import { OrderDetailPage } from '../pages/orderDetail/orderDetail';
 import { NewOrderPage } from '../pages/newOrder/newOrder';
+import { CommentPage } from '../pages/comment/comment';
 import { ImportDevicePage } from '../pages/importDevice/importDevice';
 import { OrderDetailDirective } from '../pages/directive/orderDetailDirective';
 import { DeviceDetailDirective } from '../pages/directive/deviceDetailDirective';
@@ -36,7 +37,7 @@ import { NotificationService } from '../service/notification.service'
     OrderDetailDirective,
     DeviceDetailDirective,
     ImportDeviceFormDirective,
-    AddressSelect,DeviceCategorySelect,RegisterPage
+    AddressSelect,DeviceCategorySelect,RegisterPage,CommentPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -57,7 +58,7 @@ import { NotificationService } from '../service/notification.service'
     NewOrderPage,ImportDevicePage,
     DeviceDetailDirective,
     ImportDeviceFormDirective,
-    AddressSelect,DeviceCategorySelect,RegisterPage
+    AddressSelect,DeviceCategorySelect,RegisterPage,CommentPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

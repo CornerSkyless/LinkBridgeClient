@@ -69,6 +69,28 @@ export class HomePage {
 
 
   }
+  showOrderWaitCommentList(){
+    if(this.dataService.isLogin){
+      this.navCtrl.push(OrderListPage,{listType:'orderWaitComment'});
+
+    }else {
+      let confirm = this.alertCtrl.create({
+        title: '您需要登录后操作',
+        message: '是否前往登录页面',
+        buttons: [{text: '取消'},
+          {
+            text: '去登陆',
+            handler: () => {
+              let modal = this.modalCtrl.create(LoginPage,{});
+              modal.showBackButton(true);
+              modal.present();
+            }
+          }
+        ]
+      });
+      confirm.present();
+    }
+  }
 
   clickOnNewOrder(){
     if(this.dataService.isLogin){

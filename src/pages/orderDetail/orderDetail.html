@@ -30,7 +30,9 @@
       <div padding *ngIf="orderStatus['待确认'] && !orderStatus['待派工']">
         <button type="button" [disabled]="isRevokeOrder" ion-button color="danger" (click)="revokeOrder()"  block>撤销订单</button>
       </div>
-
+      <div padding *ngIf="orderStatus['已单笔确认'] && !order.order_comment">
+        <button type="button"  ion-button (click)="comment()"  block>评价订单</button>
+      </div>
     </div>
 
     <div *ngSwitchCase="'设备详情'">

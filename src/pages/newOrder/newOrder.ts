@@ -4,6 +4,7 @@
 import { Component , OnInit  } from '@angular/core';
 
 import { NavController , NavParams , ModalController , ViewController , AlertController} from 'ionic-angular';
+import { BarcodeScanner } from 'ionic-native';
 
 import { DataService ,Res,NewOrderForm } from '../../service/data.service';
 import { NotificationService } from '../../service/notification.service';
@@ -64,6 +65,17 @@ export class NewOrderPage implements OnInit{
       ]
     });
     prompt.present();
+  }
+
+  scan(){
+    let vm = this;
+    BarcodeScanner.scan().then((barcodeData) => {
+      if(barcodeData.text){
+        vm.getDeviceInfo(barcodeData.text);
+      }
+    }, () => {
+
+    });
   }
 
   importDevice(){

@@ -14,6 +14,7 @@
   <ion-list no-border *ngIf="!selectedDevice">
     <ion-list-header>设备信息</ion-list-header>
     <button ion-item (click)="inputDeviceId()">输入设备序列号</button>
+    <button ion-item (click)="scan()">扫一扫</button>
     <button ion-item (click)="importDevice()">新增设备</button>
   </ion-list>
   <device-detail *ngIf="selectedDevice" [device]="device"></device-detail>

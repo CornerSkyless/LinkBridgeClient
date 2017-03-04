@@ -7,6 +7,7 @@ import { OrderListPage } from '../orderList/orderList'
 import { NewOrderPage } from '../newOrder/newOrder'
 import { LoginPage } from '../login/login'
 import { DataService } from '../../service/data.service'
+import { NotificationService } from '../../service/notification.service'
 
 @Component({
   selector: 'page-home',
@@ -20,6 +21,8 @@ export class HomePage {
     public actionSheetCtrl: ActionSheetController,
     public alertCtrl: AlertController,
     public dataService: DataService,
+    public notificationService: NotificationService,
+
   ) {}
 
   clickOnService(type){
@@ -115,5 +118,9 @@ export class HomePage {
       confirm.present();
     }
 
+  }
+
+  clickOnTel(){
+    this.notificationService.showBasicAlert('联系客服','0512-68078142');
   }
 }

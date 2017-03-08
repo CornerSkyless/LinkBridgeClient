@@ -14,8 +14,8 @@ export class LoginPage {
     user_account:string;
     user_password:string;
   } = {
-    user_account:"测试工厂",
-    user_password:"33333333"
+    user_account:"",
+    user_password:""
   };
   isDoing = {
     login:false

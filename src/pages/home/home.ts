@@ -6,6 +6,7 @@ import { FlowPathPage } from '../flowPath/flowPath'
 import { OrderListPage } from '../orderList/orderList'
 import { NewOrderPage } from '../newOrder/newOrder'
 import { LoginPage } from '../login/login'
+import { ScanPage } from '../scan/scan'
 import { DataService } from '../../service/data.service'
 import { NotificationService } from '../../service/notification.service'
 
@@ -14,7 +15,12 @@ import { NotificationService } from '../../service/notification.service'
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  mySlideOptions = {
+    setWrapperSize:false,
+    loop:true,
+    autoplay:1500,
+    speed:1000
+  };
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController,
@@ -94,7 +100,11 @@ export class HomePage {
       confirm.present();
     }
   }
-
+  login(){
+    let modal = this.modalCtrl.create(LoginPage,{});
+    modal.showBackButton(true);
+    modal.present();
+  }
   clickOnNewOrder(){
     if(this.dataService.isLogin){
       let modal = this.modalCtrl.create(NewOrderPage,{serviceType:'设备维修'});
@@ -122,5 +132,10 @@ export class HomePage {
 
   clickOnTel(){
     this.notificationService.showBasicAlert('联系客服','0512-68078142');
+  }
+  clickOnWechat(){
+    let modal = this.modalCtrl.create(ScanPage,{});
+    modal.showBackButton(true);
+    modal.present();
   }
 }

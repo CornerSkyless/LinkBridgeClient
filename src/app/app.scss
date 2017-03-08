@@ -98,17 +98,25 @@
   }
 }
 .home-order{
-  .button{
-    height: 60px;
-    width: 60px;
-    border-radius: 33%;
-    padding: 15px;
-    img{  width: 30px; height: 30px }
+  .buttons{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    .button{
+      height: 60px;
+      width: 60px;
+      border-radius: 33%;
+      padding: 15px;
+      img{  width: 30px; height: 30px; }
+
+    }
+    .label{
+      color: #555;
+      padding: 7px 0;
+    }
   }
-  .label{
-    color: #555;
-    padding: 7px 0;
-  }
+
+
 }
 .home-bottom{
   padding: 0 5px;

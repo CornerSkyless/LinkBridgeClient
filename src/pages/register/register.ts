@@ -21,12 +21,12 @@ AV.init({
 export class RegisterPage implements AfterViewInit{
 
   form = {
-    customer_tel:"13636521516",
-    customer_name:"北京市同济医院",
-    customer_password:"11111111",
-    password2:"11111111",
+    customer_tel:"",
+    customer_name:"",
+    customer_password:"",
+    password2:"",
     code:"",
-    customer_position:"工厂客户"
+    customer_position:""
   };
   isDoing = {
     register:false,

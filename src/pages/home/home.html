@@ -11,23 +11,23 @@
 
 <ion-content class="bg-f5">
   <ion-slides [speed]="300" [loop]="true" [autoplay]="3000" class="bg-white" style="height: 150px">
-    <ion-slide><img src="http://114.55.233.103/file/LinkBridgeMed-Assets/banner.png" >
+    <ion-slide><img src="assets/banner1.jpeg" >
     </ion-slide>
-    <ion-slide><img  src="http://114.55.233.103/file/LinkBridgeMed-Assets/banner3.png" >    </ion-slide>
-      <ion-slide><img src="http://114.55.233.103/file/LinkBridgeMed-Assets/banner4.png" >    </ion-slide>
+    <ion-slide><img  src="assets/banner2.jpeg" >    </ion-slide>
+      <ion-slide><img src="assets/banner3.jpeg" >    </ion-slide>
 
   </ion-slides>
   <div class="home-middle bg-white pt-sm pb-lg" >
     <!--<div style="width:100%;z-index: 10;position: relative;">-->
       <div style="z-index: 10;position: relative;" tappable (click)="clickOnService('technicalConsulting')"  class="circle bg-blue item-center circle-button">
-        <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/zixunLogo2.png">
+        <img src="assets/zixunIcon.png">
         <div style="width: 100%;text-align: center">咨询流程</div>
       </div>
     <!--</div>-->
     <div text-center style="width: 100%;margin-top: -50px;z-index: -5">
       <div tappable (click)="clickOnService('homeInstallation');$event.stopPropagation();" class="bg-green square-button"  >
         <div style="position: absolute;left: 10px;top:20px;align-items: center;display: flex">
-          <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/anzhuangIcon2.png" >
+          <img src="assets/anzhuangIcon.png" >
           <span class="ml-sm">安装流程</span>
         </div>
 
@@ -35,7 +35,7 @@
       <div tappable (click)="clickOnService('equipmentMaintenance')" class="bg-orange square-button" >
         <div style="position: absolute;right: 10px;top:20px;align-items: center;display: flex">
           <span class="mr-sm">维修流程</span>
-          <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/weixiuLogo.png" >
+          <img src="assets/weixiuIcon.png" >
 
         </div>
       </div>
@@ -43,23 +43,23 @@
   </div>
   <div class="home-order across mt-sm bg-white">
     <div text-center class="across  pt-sm" style="font-size: 16px">订单管理</div>
-    <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/duobianxin.png" style="width: 100%;">
+    <img src="assets/duobianxin.png" style="width: 100%;">
     <div class="across pt-sm buttons" >
       <div class="inline-block mr-lg">
         <div tappable (click)="clickOnNewOrder()" class="bg-blue button" style="background-color: #7c6abe">
-          <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/xinjiandindan.png">
+          <img src="assets/xinjiandindan.png">
         </div>
         <div class="label">新建订单</div>
       </div>
       <div  class="inline-block ml-lg mr-lg">
         <div tappable (click)="showOrderList()" class="bg-blue button" style="background-color: #27ada5">
-          <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/dindanzhuizong.png">
+          <img src="assets/dindanzhuizong.png">
         </div><br>
         <div class="label">订单追踪</div>
       </div>
       <div class="inline-block ml-lg">
         <div tappable (click)="showOrderWaitCommentList()" class="bg-blue button" style="background-color: #1498c6">
-          <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/fuwupinjia.png">
+          <img src="assets/fuwupinjia.png">
         </div><br>
         <div class="label">服务评价</div>
       </div>
@@ -68,12 +68,12 @@
   </div>
   <div text-center class="home-bottom across mt-sm mb-sm">
     <div tappable (click)="clickOnTel()"  class="inline-block bg-white button">
-      <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/dianhua.png">
+      <img src="assets/dianhua.png">
       <span>电话报修</span>
     </div>
     <div class="inline-block" style="width: 2%"></div>
     <div tappable (click)="clickOnWechat()" class="inline-block bg-white button">
-      <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/hudong.png">
+      <img src="assets/hudong.png">
       <span>微信互动</span>
     </div>
   </div>

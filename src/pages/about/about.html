@@ -8,11 +8,11 @@
 
 <ion-content padding text-center="">
   <div *ngIf="dataService.isLogin">
-    <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/scan.jpg" style="width: 300px;">
+    <img src="assets/scan.jpg" style="width: 300px;">
     <button  (click)="scan()" type="button" ion-button outline block>扫一扫</button>
   </div>
   <div *ngIf="!dataService.isLogin">
-    <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/wechat.jpg" style="width: 300px;">
+    <img src="assets/wechat.jpg" style="width: 300px;">
 
   </div>
 

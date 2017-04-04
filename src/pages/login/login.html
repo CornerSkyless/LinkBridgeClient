@@ -1,13 +1,13 @@
 <ion-content>
   <img src="http://114.55.233.103/file/LinkBridgeMed-Assets/loginBanner.jpg" >
-  <div padding style="margin-top: -30px;">
-    <ion-item>
-      <ion-label floating>用户名</ion-label>
+  <div style="margin-top: -30px;padding:0 30px;">
+    <ion-item style="padding-left:0">
+      <ion-label >用户名</ion-label>
       <ion-input name="user_account" [(ngModel)]="loginForm.user_account" type="text"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>密码</ion-label>
+    <ion-item style="padding-left:0">
+      <ion-label >密码</ion-label>
       <ion-input name="user_password" [(ngModel)]="loginForm.user_password" type="password"></ion-input>
     </ion-item>
     <div class="across mt-sm" text-right>
@@ -15,6 +15,7 @@
     </div>
     <button [disabled]="isDoing.login" (click)="login()" type="submit" ion-button color="primary" block>登录</button>
     <button  (click)="register()" type="button" ion-button outline block>注册</button>
+    <button  (click)="dismiss()" type="button" ion-button clear block>暂不登录</button>
 
   </div>
 

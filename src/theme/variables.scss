@@ -37,7 +37,7 @@ $colors: (
 // iOS only Sass variables can go here
 
 
-
+$list-ios-header-font-size: 1.5rem;
 
 // App Material Design Variables
 // --------------------------------------------------
@@ -47,7 +47,10 @@ $button-md-border-radius:4px;
 $button-md-box-shadow:0;
 $text-input-md-highlight-color:#387ef5;
 $text-input-md-highlight-color-valid:#dedede;
-
+$list-md-header-font-size: 1.5rem;
+$list-md-header-margin-bottom:1px;
+$note-md-color:#555;
+$note-ios-color:#555;
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here

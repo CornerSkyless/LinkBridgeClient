@@ -9,6 +9,7 @@ import { LoginPage } from '../login/login'
 import { ScanPage } from '../scan/scan'
 import { DataService } from '../../service/data.service'
 import { NotificationService } from '../../service/notification.service'
+import { CallNumber } from 'ionic-native';
 
 @Component({
   selector: 'page-home',
@@ -28,7 +29,6 @@ export class HomePage {
     public alertCtrl: AlertController,
     public dataService: DataService,
     public notificationService: NotificationService,
-
   ) {}
 
   clickOnService(type){
@@ -131,7 +131,19 @@ export class HomePage {
   }
 
   clickOnTel(){
-    this.notificationService.showBasicAlert('联系客服','0512-68078142');
+    let confirm = this.alertCtrl.create({
+      title: '联系客服',
+      message: '0512-68078142',
+      buttons: [{text: '取消'},
+        {
+          text: '拨打',
+          handler: () => {
+            CallNumber.callNumber('0512-68078142', true);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
   clickOnWechat(){
     let modal = this.modalCtrl.create(ScanPage,{});

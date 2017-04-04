@@ -19,7 +19,9 @@ AV.init({
   templateUrl: 'register.html'
 })
 export class RegisterPage implements AfterViewInit{
-
+  dismiss() {
+    this.viewCtrl.dismiss(false);
+  }
   form = {
     customer_tel:"",
     customer_name:"",

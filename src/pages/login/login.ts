@@ -31,6 +31,10 @@ export class LoginPage {
   needHelp(){
     this.notificationService.showBasicAlert('找回账号密码','请联系我们的客服帮助您找回账号密码');
   }
+  dismiss() {
+    this.viewCtrl.dismiss(false);
+  }
+
   login(){
     this.isDoing.login = true;
     this.dataService.request('login',this.loginForm)

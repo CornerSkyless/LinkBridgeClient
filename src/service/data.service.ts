@@ -3,6 +3,7 @@
  */
 import { Injectable } from '@angular/core';
 import { Http , Response , Headers } from '@angular/http';
+import { Storage } from '@ionic/storage';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -10,12 +11,12 @@ const urls = {
   'A029401':'192.168.3.114/',
   'testServer':'114.55.136.29/Local-',
   'linkServer':'114.55.233.103/',
-  'office':'192.168.199.175/'
+  'office':'10.1.1.201/'
 };
-const url = urls['linkServer'];
+const url = urls['office'];
 
 const backHost = 'http://' +url+ 'LinkBridgeMed-Api/index.php';
-
+const FileHost = 'http://' + url + 'LinkBridgeMed-Api/';
 class Res{
   data:any;
   list:any[];
@@ -63,8 +64,21 @@ class ImportDeviceForm{
 }
 @Injectable()
 class DataService {
+  fileHost:string;
   constructor(
-    private http: Http) {
+    private http: Http,private storage: Storage
+  ) {
+    this.fileHost = FileHost;
+    storage.ready().then(() => {
+
+      storage.get('currentUser').then((val) => {
+        if(val){
+          this.currentUser = val;
+          this.isLogin = true;
+
+        }
+      })
+    });
   }
   currentUser:UserInfo;
   isLogin = false;
@@ -90,9 +104,13 @@ class DataService {
   };
   logout = function () {
     this.currentUser = {};
+    this.storage.ready().then(() => {
+      this.storage.set('currentUser',{});
+    });
     this.isLogin = false;
+
   }
 
 
 }
-export {DataService,Res,NewOrderForm,ImportDeviceForm}
+export {DataService,Res,NewOrderForm,ImportDeviceForm,FileHost}

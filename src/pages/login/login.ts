@@ -4,6 +4,7 @@ import { NavController, ViewController, ModalController } from 'ionic-angular';
 import { DataService,Res } from '../../service/data.service'
 import { NotificationService } from '../../service/notification.service'
 import { RegisterPage } from '../register/register'
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-login',
@@ -25,7 +26,8 @@ export class LoginPage {
     public dataService: DataService,
     public notificationService: NotificationService,
     public modalCtrl: ModalController,
-    public viewCtrl:ViewController
+    public viewCtrl:ViewController,
+    public storage: Storage
 
   ) {}
   needHelp(){
@@ -44,6 +46,7 @@ export class LoginPage {
         if(res.data.user_gateway!='客户') this.notificationService.showBasicAlert('登录失败','App 仅供客户使用');
         else {
           this.dataService.currentUser = res.data;
+
           return this.dataService.request('checkCustomerIsFilledInformation',{customer_id:res.data.user_id})
         }
       })
@@ -51,6 +54,10 @@ export class LoginPage {
         if(res){
           this.dataService.isFilledData = res.data.is_filled_data;
           this.dataService.isLogin = true;
+          this.storage.ready().then(() => {
+
+            this.storage.set('currentUser',this.dataService.currentUser);
+          });
           this.viewCtrl.dismiss(false);
         }
 

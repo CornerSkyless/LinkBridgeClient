@@ -45,25 +45,30 @@
     <div text-center class="across  pt-sm" style="font-size: 16px">订单管理</div>
     <img src="assets/duobianxin.png" style="width: 100%;">
     <div class="across pt-sm buttons" >
-      <div class="inline-block mr-lg">
+      <div class="inline-block ">
         <div tappable (click)="clickOnNewOrder()" class="bg-blue button" style="background-color: #7c6abe">
           <img src="assets/xinjiandindan.png">
         </div>
         <div class="label">新建订单</div>
       </div>
-      <div  class="inline-block ml-lg mr-lg">
+      <div  class="inline-block ">
         <div tappable (click)="showOrderList()" class="bg-blue button" style="background-color: #27ada5">
           <img src="assets/dindanzhuizong.png">
         </div><br>
         <div class="label">订单追踪</div>
       </div>
-      <div class="inline-block ml-lg">
+      <div class="inline-block ">
         <div tappable (click)="showOrderWaitCommentList()" class="bg-blue button" style="background-color: #1498c6">
           <img src="assets/fuwupinjia.png">
         </div><br>
         <div class="label">服务评价</div>
       </div>
-
+      <div class="inline-block ">
+        <div tappable (click)="searchOrder()" class="bg-blue button" style="background-color: #34b257">
+          <img src="assets/searchIcon.png">
+        </div><br>
+        <div class="label">订单查询</div>
+      </div>
     </div>
   </div>
   <div text-center class="home-bottom across mt-sm mb-sm">

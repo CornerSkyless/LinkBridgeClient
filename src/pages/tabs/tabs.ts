@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { AboutPage } from '../about/about';
 import { UserPage } from '../user/user';
 import { LoginPage } from '../login/login';
+import { NewsListPage } from '../newsList/newsList';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class TabsPage {
   tab1Root: any = HomePage;
   tab2Root: any = AboutPage;
   tab3Root: any = UserPage;
+  tab4Root: any = NewsListPage;
 
   constructor() {
 

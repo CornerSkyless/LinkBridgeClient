@@ -1,0 +1,34 @@
+<ion-header >
+  <ion-navbar >
+    <ion-title>
+     资讯列表
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="queryNewsList()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content  class="outer-content">
+  <div *ngIf="!isDoing.queryNewsList">
+    <ion-card  *ngFor="let news of newsList" tappable (click)="showNewsDetail(news)">
+      <div class="news-box">
+        <p class="title">{{news.title}}</p>
+        <p class="time">{{news.uploaded_time}}</p>
+        <img [src]="dataService.fileHost + news.img_url">
+        <p class="content">{{news.content}}</p>
+        <div class="view">阅读全文</div>
+      </div>
+
+    </ion-card>
+    <ion-grid *ngIf="newsList.length==0" padding-top>
+      <ion-row>
+        <ion-col width-100 text-center>暂无资讯</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+</ion-content>

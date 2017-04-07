@@ -10,6 +10,7 @@ import { ScanPage } from '../scan/scan'
 import { DataService } from '../../service/data.service'
 import { NotificationService } from '../../service/notification.service'
 import { CallNumber } from 'ionic-native';
+import { OrderDetailPage } from '../orderDetail/orderDetail'
 
 @Component({
   selector: 'page-home',
@@ -129,7 +130,31 @@ export class HomePage {
     }
 
   }
-
+  searchOrder() {
+    let prompt = this.alertCtrl.create({
+      title: '查询订单',
+      message: "输入订单号码",
+      inputs: [
+        {
+          name: 'order_id',
+          placeholder: '订单号'
+        },
+      ],
+      buttons: [
+        {
+          text: '取消',
+          handler: () => {}
+        },
+        {
+          text: '查询',
+          handler: data => {
+            this.navCtrl.push(OrderDetailPage,{order_id:data.order_id})
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
   clickOnTel(){
     let confirm = this.alertCtrl.create({
       title: '联系客服',

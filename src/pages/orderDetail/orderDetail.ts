@@ -61,8 +61,9 @@ export class OrderDetailPage implements OnInit{
         }
       )
       .catch((message)=>{
-        this.notificationService.stopLoading()
+        this.notificationService.stopLoading();
         this.notificationService.showBasicAlert('加载失败',message);
+        this.navCtrl.pop();
       })
   }
 

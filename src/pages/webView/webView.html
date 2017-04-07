@@ -1,0 +1,15 @@
+<ion-header >
+  <ion-navbar >
+    <ion-title>
+      详情
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">返回</span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="outer-content">
+  <iframe  class="all-iframe"  sandbox="allow-forms allow-same-origin allow-scripts" [src]="url" style="width: 100%" frameborder="0"></iframe>
+</ion-content>

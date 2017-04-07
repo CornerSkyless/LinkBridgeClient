@@ -12,6 +12,8 @@ import { RegisterPage } from '../pages/register/register';
 import { OrderListPage } from '../pages/orderList/orderList';
 import { OrderDetailPage } from '../pages/orderDetail/orderDetail';
 import { NewOrderPage } from '../pages/newOrder/newOrder';
+import { NewsListPage } from '../pages/newsList/newsList';
+import { WebViewPage } from '../pages/webView/webView';
 import { ScanPage } from '../pages/scan/scan';
 import { CommentPage } from '../pages/comment/comment';
 import { ImportDevicePage } from '../pages/importDevice/importDevice';
@@ -22,6 +24,10 @@ import { AddressSelect } from '../pages/directive/addressSelect';
 import { DeviceCategorySelect } from '../pages/directive/deviceCategorySelect';
 import { DataService } from '../service/data.service'
 import { NotificationService } from '../service/notification.service'
+import { SafariViewController } from '@ionic-native/safari-view-controller';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Storage } from '@ionic/storage';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -38,7 +44,7 @@ import { NotificationService } from '../service/notification.service'
     OrderDetailDirective,
     DeviceDetailDirective,
     ImportDeviceFormDirective,
-    AddressSelect,DeviceCategorySelect,RegisterPage,CommentPage,ScanPage
+    AddressSelect,DeviceCategorySelect,RegisterPage,CommentPage,ScanPage,NewsListPage,WebViewPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -59,11 +65,11 @@ import { NotificationService } from '../service/notification.service'
     NewOrderPage,ImportDevicePage,
     DeviceDetailDirective,
     ImportDeviceFormDirective,
-    AddressSelect,DeviceCategorySelect,RegisterPage,CommentPage,ScanPage
+    AddressSelect,DeviceCategorySelect,RegisterPage,CommentPage,ScanPage,NewsListPage,WebViewPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataService,NotificationService
+    DataService,NotificationService,SafariViewController,InAppBrowser,Storage
   ]
 })
 export class AppModule {}

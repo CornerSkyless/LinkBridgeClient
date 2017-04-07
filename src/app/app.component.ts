@@ -14,6 +14,8 @@ export class MyApp {
     platform.setLang("zh",true);
     // $ionicConfigProvider.navBar.alignTitle('center');
     platform.ready().then(() => {
+      platform.setLang("zh",true);
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();

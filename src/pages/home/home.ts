@@ -11,7 +11,9 @@ import { DataService } from '../../service/data.service'
 import { NotificationService } from '../../service/notification.service'
 import { CallNumber } from 'ionic-native';
 import { OrderDetailPage } from '../orderDetail/orderDetail'
-
+import { SafariViewController } from '@ionic-native/safari-view-controller';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { WebViewPage } from '../webView/webView'
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -30,8 +32,37 @@ export class HomePage {
     public alertCtrl: AlertController,
     public dataService: DataService,
     public notificationService: NotificationService,
+    private safariViewController: SafariViewController,
+    private iab: InAppBrowser
   ) {}
+  goWebsite(){
+    this.safariViewController.isAvailable()
+      .then((available: boolean) => {
+          if (available) {
 
+            this.safariViewController.show({
+              url: 'http://www.linkbridgemed.cn/',
+              hidden: false,
+              animated: false,
+              transition: 'curl',
+              enterReaderModeIfAvailable: true,
+              tintColor: '#ff0000'
+            })
+              .then((result: any) => {
+                  if(result.event === 'opened') console.log('Opened');
+                  else if(result.event === 'loaded') console.log('Loaded');
+                  else if(result.event === 'closed') console.log('Closed');
+                },
+                (error: any) => console.error(error)
+              );
+
+          } else {
+            const browser = this.iab.create('http://www.linkbridgemed.cn/', '_blank',{location:"no",zoom:"no"});
+            browser.show();
+          }
+        }
+      );
+  }
   clickOnService(type){
     let modal = this.modalCtrl.create(FlowPathPage,{serviceType:type});
     modal.showBackButton(true);

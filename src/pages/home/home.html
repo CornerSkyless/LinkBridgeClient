@@ -10,13 +10,16 @@
 </ion-header>
 
 <ion-content class="bg-f5">
-  <ion-slides [speed]="300" [loop]="true" [autoplay]="3000" class="bg-white" style="height: 150px">
-    <ion-slide><img src="assets/banner1.jpeg" >
-    </ion-slide>
-    <ion-slide><img  src="assets/banner2.jpeg" >    </ion-slide>
+  <div tappable (click)="goWebsite()">
+    <ion-slides  [speed]="300" [loop]="true" [autoplay]="3000" class="bg-white" style="height: 150px">
+      <ion-slide><img src="assets/banner1.jpeg" >
+      </ion-slide>
+      <ion-slide><img  src="assets/banner2.jpeg" >    </ion-slide>
       <ion-slide><img src="assets/banner3.jpeg" >    </ion-slide>
 
-  </ion-slides>
+    </ion-slides>
+  </div>
+
   <div class="home-middle bg-white pt-sm pb-lg" >
     <!--<div style="width:100%;z-index: 10;position: relative;">-->
       <div style="z-index: 10;position: relative;" tappable (click)="clickOnService('technicalConsulting')"  class="circle bg-blue item-center circle-button">

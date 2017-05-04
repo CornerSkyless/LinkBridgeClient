@@ -32,6 +32,7 @@ export class OrderDetailDirective implements OnChanges{
   };
 
   @Input() order;
+  @Input() isLogin;
   orderStatus={};
 
   ngOnChanges(changes){

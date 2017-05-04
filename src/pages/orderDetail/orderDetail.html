@@ -5,28 +5,32 @@
     </ion-title>
 
   </ion-navbar>
-  <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="panel">
-      <ion-segment-button value="订单详情">
-        订单
-      </ion-segment-button>
-      <ion-segment-button value="设备详情">
-        设备
-      </ion-segment-button>
-      <ion-segment-button value="维修单详情" >
-        维修单
-      </ion-segment-button>
-      <ion-segment-button value="发票详情" >
-        发票
-      </ion-segment-button>
+  <div *ngIf="dataService.isLogin">
+    <ion-toolbar no-border-top>
+      <ion-segment [(ngModel)]="panel">
+        <ion-segment-button value="订单详情">
+          订单
+        </ion-segment-button>
 
-    </ion-segment>
-  </ion-toolbar>
+        <ion-segment-button value="设备详情">
+          设备
+        </ion-segment-button>
+        <ion-segment-button value="维修单详情" >
+          维修单
+        </ion-segment-button>
+        <ion-segment-button value="发票详情" >
+          发票
+        </ion-segment-button>
+
+      </ion-segment>
+    </ion-toolbar>
+  </div>
+
 </ion-header>
 <ion-content  class="outer-content">
   <div [ngSwitch]="panel">
     <div *ngSwitchCase="'订单详情'">
-      <order-detail [order]="order" ></order-detail>
+      <order-detail [order]="order" [isLogin]="dataService.isLogin"></order-detail>
       <div padding *ngIf="dataService.isLogin && orderStatus['待确认'] && !orderStatus['待派工']">
         <button type="button" [disabled]="isRevokeOrder" ion-button color="danger" (click)="revokeOrder()"  block>撤销订单</button>
       </div>
@@ -34,66 +38,68 @@
         <button type="button"  ion-button (click)="comment()"  block>评价订单</button>
       </div>
     </div>
-
-    <div *ngSwitchCase="'设备详情'">
-      <device-detail [device]="order"></device-detail>
-    </div>
-
-    <div *ngSwitchCase="'维修单详情'">
-      <div *ngIf="order">
-        <div  *ngIf="orderStatus['待单笔确认']">
-          <ion-list no-border>
-            <ion-list-header>维修单信息</ion-list-header>
-            <ion-item >维修单号<ion-note item-right >{{order.order_id}}</ion-note></ion-item>
-            <ion-item >维修完成时间<ion-note item-right >{{order.maintenance_completed_time}}</ion-note></ion-item>
-
-            <ion-item >维修情况<ion-note item-right >{{order.order_maintenance_detail}}</ion-note></ion-item>
-
-          </ion-list>
-          <ion-list no-border>
-            <ion-list-header>费用</ion-list-header>
-
-            <ion-item >服务费<ion-note item-right >{{order.order_service_price}} 元</ion-note></ion-item>
-            <ion-item >配件费<ion-note item-right >{{order.order_part_price}} 元</ion-note></ion-item>
-            <ion-item >总计<ion-note item-right >{{order.order_total_price}} 元</ion-note></ion-item>
-
-          </ion-list>
-        </div>
-        <div *ngIf="!orderStatus['待单笔确认']">
-          <ion-grid padding-top>
-            <ion-row>
-              <ion-col width-100 text-center>暂未维修</ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
+    <div *ngIf="dataService.isLogin">
+      <div *ngSwitchCase="'设备详情'">
+        <device-detail [device]="order"></device-detail>
       </div>
 
-    </div>
-    <div *ngSwitchCase="'发票详情'">
-      <div *ngIf="order">
-        <div  *ngIf="orderStatus['已开票']">
-          <ion-list no-border>
-            <ion-list-header>发票信息</ion-list-header>
-            <ion-item >发票号<ion-note item-right >{{order.bill_id}}</ion-note></ion-item>
-            <ion-item >开票日期<ion-note item-right >{{order.bill_filled_time}}</ion-note></ion-item>
-            <ion-item >快递单号<ion-note item-right >{{order.bill_express_number}}</ion-note></ion-item>
-            <ion-item >收件人<ion-note item-right >{{order.bill_receiver_name}}</ion-note></ion-item>
-            <ion-item >开票金额	<ion-note item-right >{{order.bill_price}}</ion-note></ion-item>
-            <ion-item >项目名称	<ion-note item-right >{{order.bill_project_name}}</ion-note></ion-item>
+      <div *ngSwitchCase="'维修单详情'">
+        <div *ngIf="order">
+          <div  *ngIf="orderStatus['待单笔确认']">
+            <ion-list no-border>
+              <ion-list-header>维修单信息</ion-list-header>
+              <ion-item >维修单号<ion-note item-right >{{order.order_id}}</ion-note></ion-item>
+              <ion-item >维修完成时间<ion-note item-right >{{order.maintenance_completed_time}}</ion-note></ion-item>
 
-          </ion-list>
+              <ion-item >维修情况<ion-note item-right >{{order.order_maintenance_detail}}</ion-note></ion-item>
 
+            </ion-list>
+            <ion-list no-border>
+              <ion-list-header>费用</ion-list-header>
+
+              <ion-item >服务费<ion-note item-right >{{order.order_service_price}} 元</ion-note></ion-item>
+              <ion-item >配件费<ion-note item-right >{{order.order_part_price}} 元</ion-note></ion-item>
+              <ion-item >总计<ion-note item-right >{{order.order_total_price}} 元</ion-note></ion-item>
+
+            </ion-list>
+          </div>
+          <div *ngIf="!orderStatus['待单笔确认']">
+            <ion-grid padding-top>
+              <ion-row>
+                <ion-col width-100 text-center>暂未维修</ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
         </div>
-        <div *ngIf="!orderStatus['已开票']">
-          <ion-grid padding-top>
-            <ion-row>
-              <ion-col width-100 text-center>暂未开票</ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
+
       </div>
+      <div *ngSwitchCase="'发票详情'">
+        <div *ngIf="order">
+          <div  *ngIf="orderStatus['已开票']">
+            <ion-list no-border>
+              <ion-list-header>发票信息</ion-list-header>
+              <ion-item >发票号<ion-note item-right >{{order.bill_id}}</ion-note></ion-item>
+              <ion-item >开票日期<ion-note item-right >{{order.bill_filled_time}}</ion-note></ion-item>
+              <ion-item >快递单号<ion-note item-right >{{order.bill_express_number}}</ion-note></ion-item>
+              <ion-item >收件人<ion-note item-right >{{order.bill_receiver_name}}</ion-note></ion-item>
+              <ion-item >开票金额	<ion-note item-right >{{order.bill_price}}</ion-note></ion-item>
+              <ion-item >项目名称	<ion-note item-right >{{order.bill_project_name}}</ion-note></ion-item>
 
+            </ion-list>
+
+          </div>
+          <div *ngIf="!orderStatus['已开票']">
+            <ion-grid padding-top>
+              <ion-row>
+                <ion-col width-100 text-center>暂未开票</ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+
+      </div>
     </div>
+
 
   </div>
 

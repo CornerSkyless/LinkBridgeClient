@@ -18,7 +18,7 @@ export class NewsListPage implements OnInit {
     queryNewsList:false
   };
   newsList:{
-    title:string;url:string;img_url:string;uploaded_time:string;content:string;
+    title:string;url:string;img_url:string;uploaded_time:string;content:string;id:string;
   }[] = [];
   constructor(
     private dataService: DataService,
@@ -39,13 +39,19 @@ export class NewsListPage implements OnInit {
         this.newsList = res.list;
         console.log(this.newsList);
         this.isDoing.queryNewsList = false;
+        let newsIdList = res.list.map((news)=>{return news.id});
+        this.dataService.checkUnreadNews(newsIdList);
       })
       .catch((message)=>{
         this.notificationService.stopLoading();
         this.notificationService.showBasicAlert('加载失败',message);
       })
   }
-  showNewsDetail(news:{url:string;}){
+  showNewsDetail(news:{url:string;id:string;}){
+    let newsIdList = this.newsList.map((news)=>{return news.id});
+
+    this.dataService.readNews(news.id,newsIdList);
+
     this.safariViewController.isAvailable()
       .then((available: boolean) => {
           if (available) {
@@ -72,10 +78,14 @@ export class NewsListPage implements OnInit {
           }
         }
       );
+
     // this.navCtrl.push(WebViewPage,{url:news.url})
 
   }
-
+  readAllNews(){
+    let newsIdList = this.newsList.map((news)=>{return news.id});
+    this.dataService.readAllNews(newsIdList);
+  }
   ngOnInit(){
 
     this.queryNewsList();

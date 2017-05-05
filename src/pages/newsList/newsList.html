@@ -5,6 +5,9 @@
     </ion-title>
 
     <ion-buttons end>
+      <button ion-button (click)="readAllNews()">
+        全部标为已读
+      </button>
       <button ion-button icon-only (click)="queryNewsList()">
         <ion-icon name="refresh"></ion-icon>
       </button>
@@ -15,7 +18,7 @@
   <div *ngIf="!isDoing.queryNewsList">
     <ion-card  *ngFor="let news of newsList" tappable (click)="showNewsDetail(news)">
       <div class="news-box">
-        <p class="title">{{news.title}}</p>
+        <p class="title"> <ion-badge margin-right *ngIf="dataService.unreadNews.indexOf(news.id)>=0">New</ion-badge>{{news.title}}</p>
         <p class="time">{{news.uploaded_time}}</p>
         <img [src]="dataService.fileHost + news.img_url">
         <p class="content">{{news.content}}</p>

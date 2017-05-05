@@ -5,6 +5,7 @@ import { AboutPage } from '../about/about';
 import { UserPage } from '../user/user';
 import { LoginPage } from '../login/login';
 import { NewsListPage } from '../newsList/newsList';
+import { DataService , Res } from '../../service/data.service';
 
 
 @Component({
@@ -18,7 +19,9 @@ export class TabsPage {
   tab3Root: any = UserPage;
   tab4Root: any = NewsListPage;
 
-  constructor() {
+  constructor(
+    private dataService: DataService,
+  ) {
 
   }
 }

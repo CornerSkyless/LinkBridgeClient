@@ -65,6 +65,7 @@ class ImportDeviceForm{
 @Injectable()
 class DataService {
   fileHost:string;
+  unreadNews:string[] = [];
   constructor(
     private http: Http,private storage: Storage
   ) {
@@ -77,7 +78,8 @@ class DataService {
           this.isLogin = true;
 
         }
-      })
+      });
+
     });
   }
   currentUser:UserInfo;
@@ -109,8 +111,46 @@ class DataService {
     });
     this.isLogin = false;
 
+  };
+  checkUnreadNews = function (newsList:string[]) {
+    this.storage.ready()
+      .then(()=>{
+        this.unreadNews = [];
+        return this.storage.get('readNewsList');
+      })
+      .then((val)=>{
+        if(val){
+          newsList.forEach((id)=>{
+            if(val.indexOf(id)<0) this.unreadNews.push(id);
+          })
+        }else {
+          this.unreadNews = newsList;
+        }
+      })
+  };
+  readNews = function (id:string,newsList:string[]) {
+    this.storage.ready()
+      .then(()=>{
+        this.unreadNews = [];
+        return this.storage.get('readNewsList');
+      })
+      .then((val)=>{
+        if(val) val.push(id);
+        else val = [id];
+        return this.storage.set('readNewsList',val);
+      })
+      .then(()=>{
+        this.checkUnreadNews(newsList);
+      })
+  };
+  readAllNews = function (newsList:string[]) {
+    this.storage.ready()
+      .then(()=>{
+        return this.storage.set('readNewsList',newsList);
+      })
+      .then(()=>{
+        this.checkUnreadNews(newsList);
+      })
   }
-
-
 }
 export {DataService,Res,NewOrderForm,ImportDeviceForm,FileHost}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 
 import { NavController, ModalController, ActionSheetController, AlertController } from 'ionic-angular';
 
@@ -7,7 +7,7 @@ import { OrderListPage } from '../orderList/orderList'
 import { NewOrderPage } from '../newOrder/newOrder'
 import { LoginPage } from '../login/login'
 import { ScanPage } from '../scan/scan'
-import { DataService } from '../../service/data.service'
+import { DataService,Res } from '../../service/data.service'
 import { NotificationService } from '../../service/notification.service'
 import { CallNumber } from 'ionic-native';
 import { OrderDetailPage } from '../orderDetail/orderDetail'
@@ -18,13 +18,20 @@ import { WebViewPage } from '../webView/webView'
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit{
   mySlideOptions = {
     setWrapperSize:false,
     loop:true,
     autoplay:1500,
     speed:1000
   };
+  ngOnInit(){
+    this.dataService.request('listNewsHistory',{})
+      .then((res:Res) =>{
+        let newsIdList = res.list.map((news)=>{return news.id});
+        this.dataService.checkUnreadNews(newsIdList);
+      })
+  }
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController,

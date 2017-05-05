@@ -1,7 +1,7 @@
 <ion-tabs>
 
   <ion-tab [root]="tab1Root" tabTitle="首页" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab4Root" tabTitle="资讯" tabIcon="paper"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="资讯" [tabBadge]="dataService.unreadNews.length" tabIcon="paper"></ion-tab>
 
   <ion-tab [root]="tab2Root" tabTitle="扫一扫" tabIcon="qr-scanner"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="用户" tabIcon="contacts"></ion-tab>

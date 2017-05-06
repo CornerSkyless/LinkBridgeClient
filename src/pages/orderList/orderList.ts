@@ -79,6 +79,7 @@ export class OrderListPage implements OnInit {
   isDoing = {
     queryOrderList:false
   };
+  orderListDisplay = [];
   constructor(
     private dataService: DataService,
     private notificationService:NotificationService,
@@ -94,6 +95,7 @@ export class OrderListPage implements OnInit {
       .then((res:Res) =>{
         this.notificationService.stopLoading();
         this.orderList = res.list;
+        this.orderListDisplay = this.orderList;
         this.isDoing.queryOrderList = false;
       })
       .catch((message)=>{
@@ -110,5 +112,19 @@ export class OrderListPage implements OnInit {
 
   showOrderDetail(order_id:string){
     this.navCtrl.push(OrderDetailPage,{order_id:order_id})
+  }
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.orderListDisplay = this.orderList;
+
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.orderListDisplay = this.orderList.filter((order)=>{
+        return order.order_id.indexOf(val)>=0;
+      })
+    }
   }
 }

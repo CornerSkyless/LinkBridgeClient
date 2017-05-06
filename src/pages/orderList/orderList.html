@@ -13,7 +13,8 @@
 </ion-header>
 <ion-content  class="outer-content">
 <div *ngIf="!isDoing.queryOrderList">
-  <ion-card *ngFor="let order of orderList" tappable (click)="showOrderDetail(order.order_id)">
+  <ion-searchbar (ionInput)="getItems($event)"  [showCancelButton]="shouldShowCancel" placeholder="输入订单号查询"></ion-searchbar>
+  <ion-card *ngFor="let order of orderListDisplay" tappable (click)="showOrderDetail(order.order_id)">
     <ion-card-header>
       <span style="float: left">{{order.device_name}}</span>
       <ion-badge style="float: right">状态: {{order.order_status}}</ion-badge>

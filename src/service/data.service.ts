@@ -31,6 +31,7 @@ class UserInfo{
   user_name:string;
   user_type:string;
   uuid:string;
+  isFilledData:boolean;
 }
 class NewOrderForm{
   order_broken_detail="";
@@ -76,7 +77,7 @@ class DataService {
         if(val){
           this.currentUser = val;
           this.isLogin = true;
-
+          this.isFilledData = this.currentUser.isFilledData;
         }
       });
 

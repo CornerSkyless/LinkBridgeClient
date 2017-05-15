@@ -5,7 +5,9 @@
 
 import { Component  , Input , Output , EventEmitter , OnChanges } from '@angular/core';
 import { NotificationService } from '../../service/notification.service';
+import { SelectDeviceName } from './deviceNameSelect';
 
+import { NavController , NavParams , ModalController , ViewController , AlertController} from 'ionic-angular';
 
 import { DataService , Res } from '../../service/data.service';
 
@@ -26,7 +28,8 @@ export class DeviceCategorySelect implements OnChanges{
 
   constructor(
     private dataService: DataService,
-    private notificationService:NotificationService
+    private notificationService:NotificationService,
+  public modalCtrl: ModalController,
 
   ) {}
 
@@ -57,6 +60,21 @@ export class DeviceCategorySelect implements OnChanges{
       categoryName=> { if(categoryName.name==this.deviceCategory) this.deviceNameList = categoryName.deviceNames }
     );
     this.change();
+  }
+
+  selectName(){
+    let modal = this.modalCtrl.create(SelectDeviceName,{deviceNameList:this.deviceNameList});
+
+    modal.showBackButton(true);
+    modal.onDidDismiss(res => {
+      if(res){
+        this.deviceName=res;
+        this.change();
+      }else {
+        console.log('Nothing happened');
+      }
+    });
+    modal.present();
   }
 
 

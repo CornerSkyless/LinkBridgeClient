@@ -53,6 +53,7 @@ export class LoginPage {
       .then((res:Res)=>{
         if(res){
           this.dataService.isFilledData = res.data.is_filled_data;
+          this.dataService.currentUser.isFilledData = res.data.is_filled_data;
           this.dataService.isLogin = true;
           this.storage.ready().then(() => {
 

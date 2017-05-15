@@ -13,6 +13,7 @@ import { OrderListPage } from '../pages/orderList/orderList';
 import { OrderDetailPage } from '../pages/orderDetail/orderDetail';
 import { NewOrderPage } from '../pages/newOrder/newOrder';
 import { NewsListPage } from '../pages/newsList/newsList';
+import { SelectDeviceName } from '../pages/directive/deviceNameSelect';
 import { WebViewPage } from '../pages/webView/webView';
 import { ScanPage } from '../pages/scan/scan';
 import { CommentPage } from '../pages/comment/comment';
@@ -44,7 +45,7 @@ import { Storage } from '@ionic/storage';
     OrderDetailDirective,
     DeviceDetailDirective,
     ImportDeviceFormDirective,
-    AddressSelect,DeviceCategorySelect,RegisterPage,CommentPage,ScanPage,NewsListPage,WebViewPage
+    AddressSelect,DeviceCategorySelect,RegisterPage,CommentPage,ScanPage,NewsListPage,WebViewPage,SelectDeviceName
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -65,7 +66,7 @@ import { Storage } from '@ionic/storage';
     NewOrderPage,ImportDevicePage,
     DeviceDetailDirective,
     ImportDeviceFormDirective,
-    AddressSelect,DeviceCategorySelect,RegisterPage,CommentPage,ScanPage,NewsListPage,WebViewPage
+    AddressSelect,DeviceCategorySelect,RegisterPage,CommentPage,ScanPage,NewsListPage,WebViewPage,SelectDeviceName
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

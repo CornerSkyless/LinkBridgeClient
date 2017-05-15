@@ -5,10 +5,16 @@
   </ion-select>
 </ion-item>
 <ion-item *ngIf="deviceCategory!='其它'">
-  <ion-label stacked>设备名称</ion-label>
-  <ion-select (ionChange)="change()" [disabled]="!deviceCategory" cancelText="取消" okText="确认" [(ngModel)]="deviceName">
-    <ion-option *ngFor="let deviceName of deviceNameList" [value]="deviceName.name" >{{deviceName.name}}</ion-option>
-  </ion-select>
+  <div style="margin-bottom: 4px;font-size: 1.2rem;">设备名称</div>
+  <div *ngIf="!deviceCategory" >请先选择类别</div>
+
+  <div *ngIf="!deviceName && deviceCategory" (click)="selectName()">点击选择设备名称</div>
+  <div *ngIf="deviceName && deviceCategory" (click)="selectName()">{{deviceName}}</div>
+  <!--<ion-select (ionChange)="change()" [disabled]="!deviceCategory" cancelText="取消" okText="确认" [(ngModel)]="deviceName">-->
+    <!--<ion-option *ngFor="let deviceName of deviceNameList" [value]="deviceName.name" >{{deviceName.name}}</ion-option>-->
+  <!--</ion-select>-->
+
+
 </ion-item>
 <ion-item *ngIf="deviceCategory=='其它'">
   <ion-label stacked>设备名称</ion-label>

@@ -116,6 +116,7 @@ export class ImportDeviceFormDirective implements OnInit{
 
 
   submit(){
+    console.log(this.form);
     for(let key in this.form){
       if(this.form[key] == ""){
         this.notificationService.showBasicAlert('操作失败','请填写所有字段');

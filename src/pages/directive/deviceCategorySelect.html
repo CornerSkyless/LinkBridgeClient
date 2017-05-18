@@ -18,5 +18,5 @@
 </ion-item>
 <ion-item *ngIf="deviceCategory=='其它'">
   <ion-label stacked>设备名称</ion-label>
-  <ion-input  (ionChange)="change()" name="device_name" [(ngModel)]="deviceName"  type="text"></ion-input>
+  <ion-input  (blur)="change()" name="device_name" [(ngModel)]="deviceName"  type="text"></ion-input>
 </ion-item>

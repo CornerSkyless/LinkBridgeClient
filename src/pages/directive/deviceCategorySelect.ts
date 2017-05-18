@@ -36,8 +36,10 @@ export class DeviceCategorySelect implements OnChanges{
 
 
   change(){
+    console.info('deviceName',this.deviceName);
     this.deviceCategoryChange.emit(this.deviceCategory);
     this.deviceNameChange.emit(this.deviceName);
+
   }
 
   ngOnChanges(changes){

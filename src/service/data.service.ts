@@ -71,10 +71,16 @@ class DataService {
     private http: Http,private storage: Storage
   ) {
     this.fileHost = FileHost;
-    storage.ready().then(() => {
 
-      storage.get('currentUser').then((val) => {
-        if(val){
+  }
+  currentUser:UserInfo;
+  isLogin = false;
+  isFilledData = false;
+  checkLogin = function () {
+    this.storage.ready().then(() => {
+
+      this.storage.get('currentUser').then((val) => {
+        if(val.hasOwnProperty('user_id')){
           this.currentUser = val;
           this.isLogin = true;
           this.isFilledData = this.currentUser.isFilledData;
@@ -82,10 +88,7 @@ class DataService {
       });
 
     });
-  }
-  currentUser:UserInfo;
-  isLogin = false;
-  isFilledData = false;
+  };
   request = function (method,form) {
     return new Promise((resolve,reject)=>{
       let headers = new Headers();

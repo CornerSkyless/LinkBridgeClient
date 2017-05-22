@@ -26,6 +26,7 @@ export class HomePage implements OnInit{
     speed:1000
   };
   ngOnInit(){
+    this.dataService.checkLogin();
     this.dataService.request('listNewsHistory',{})
       .then((res:Res) =>{
         let newsIdList = res.list.map((news)=>{return news.id});

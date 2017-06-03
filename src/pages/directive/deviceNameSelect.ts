@@ -3,7 +3,7 @@
  */
 import { Component , OnInit } from '@angular/core';
 
-import { NavController , NavParams , ViewController } from 'ionic-angular';
+import { NavController , NavParams , ViewController, AlertController } from 'ionic-angular';
 
 
 
@@ -19,7 +19,9 @@ export class SelectDeviceName implements OnInit{
 
     public navCtrl: NavController,
     public viewCtrl:ViewController,
-    public navParams:NavParams
+    public navParams:NavParams,
+    public alertCtrl: AlertController,
+
   ) {}
 
   deviceNameList:{name:string}[] = [];
@@ -53,6 +55,32 @@ export class SelectDeviceName implements OnInit{
         return (item.name.indexOf(val) >=0);
       })
     }
+  }
+
+  inputName(){
+    let prompt = this.alertCtrl.create({
+      title: '手动输入',
+      message: "输入设备名称",
+      inputs: [
+        {
+          name: 'deviceName',
+          placeholder: '设备名称'
+        },
+      ],
+      buttons: [
+        {
+          text: '取消',
+          handler: () => {}
+        },
+        {
+          text: '确认',
+          handler: data => {
+            this.viewCtrl.dismiss(data.deviceName);
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
 }

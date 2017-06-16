@@ -31,8 +31,22 @@
       <ion-label stacked>备注</ion-label>
       <ion-input name="order_broken_detail" [(ngModel)]="form.order_broken_detail"  type="text"></ion-input>
     </ion-item>
+
   </ion-list>
+  <div padding *ngFor="let url of imgList">
+    <img [src]="dataService.fileHost + url" alt="">
+  </div>
   <div padding>
+      <div style="background: #3c82de;width: 100%;border-radius: 4px;position: relative;height: 45px">
+        <div  style="position:absolute;left: 0;right: 0;bottom: 0;top: 0; display: flex;justify-content: center;align-items: center;color: white">上传图片</div>
+        <form #fileForm>
+
+        <input type="file" name="file" (change)="uploadFile($event)" accept="image/*" [disabled]="isUploading" style="position:absolute;left: 0;right: 0;bottom: 0;top:0;width: 100% ;opacity: 0"/>
+        </form>
+
+      </div>
+
+
     <button type="button" [disabled]="isSubmitting || !selectedDevice" ion-button color="primary" (click)="submit()"  block>确认下单</button>
   </div>
 </ion-content>

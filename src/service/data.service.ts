@@ -13,7 +13,7 @@ const urls = {
   'linkServer':'114.55.233.103/',
   'office':'10.1.1.201/'
 };
-const url = urls['linkServer'];
+const url = urls['office'];
 
 const backHost = 'http://' +url+ 'LinkBridgeMed-Api/index.php';
 const FileHost = 'http://' + url + 'LinkBridgeMed-Api/';
@@ -37,6 +37,7 @@ class NewOrderForm{
   order_broken_detail="";
   order_device_id="";
   order_service_type="";
+  order_broken_img_list=[];
 }
 class ImportDeviceForm{
   device_category="";
@@ -108,6 +109,22 @@ class DataService {
         )
     })
   };
+  upload = function (form) {
+    return new Promise((resolve,reject)=>{
+      this.http.post(backHost,form)
+        .map((res:Response) => res.json())
+        .subscribe(
+          response => {
+            if(response){
+              if(response.result) resolve(response);
+              else  reject(response.errorInfo);
+            }else reject('未返回数据');
+          },
+          err => reject(err),
+        )
+    })
+  };
+
   logout = function () {
     this.currentUser = {};
     this.storage.ready().then(() => {

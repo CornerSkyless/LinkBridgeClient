@@ -1,7 +1,7 @@
 /**
  * Created by cornerskyless on 2017/3/2.
  */
-import { Component , OnInit  } from '@angular/core';
+import { Component , OnInit , ElementRef, ViewChild } from '@angular/core';
 
 import { NavController , NavParams , ModalController , ViewController , AlertController} from 'ionic-angular';
 import { BarcodeScanner } from 'ionic-native';
@@ -22,7 +22,8 @@ export class NewOrderPage implements OnInit{
   selectedDevice = false;
   isSubmitting = false;
   form:NewOrderForm = new NewOrderForm();
-
+  isUploading = false;
+  imgList:string[] = [];
   constructor(
     private dataService: DataService,
     private notificationService:NotificationService,
@@ -30,10 +31,12 @@ export class NewOrderPage implements OnInit{
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
     public navParams: NavParams,
-    public viewCtrl:ViewController
+    public viewCtrl:ViewController,
+    public el:ElementRef
   ) {}
 
-
+  @ViewChild('fileForm')
+  fileForm: ElementRef;
 
   dismiss() {
     this.viewCtrl.dismiss(false);
@@ -121,6 +124,7 @@ export class NewOrderPage implements OnInit{
   submit(){
     this.isSubmitting = true;
     this.form.order_device_id = this.device.device_id;
+    this.form.order_broken_img_list = this.imgList;
     this.dataService.request('newOrder',this.form)
       .then(()=>{
         this.isSubmitting = false;
@@ -134,6 +138,21 @@ export class NewOrderPage implements OnInit{
 
 
   }
+  uploadFile(e){
+    this.isUploading = true;
+    let formData = new FormData(this.fileForm.nativeElement);
+    formData.append('method','uploadOrderBrokenImg');
+    this.dataService.upload(formData)
+      .then((res:{data:{url:string}})=>{
+        this.imgList.push(res.data.url);
+        this.isUploading = false;
 
+      })
+      .catch(()=>{
+        this.isUploading = false;
+      })
+
+
+  }
 
 }

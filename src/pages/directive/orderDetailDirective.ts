@@ -6,6 +6,7 @@ import { Component , Input , OnChanges} from '@angular/core';
 import { NavController , NavParams , ModalController } from 'ionic-angular';
 
 import { NotificationService } from '../../service/notification.service';
+import { DataService ,Res,NewOrderForm } from '../../service/data.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class OrderDetailDirective implements OnChanges{
     public modalCtrl: ModalController,
     private notificationService:NotificationService,
 
+    private dataService: DataService,
 
     public navParams: NavParams,
   ) {}

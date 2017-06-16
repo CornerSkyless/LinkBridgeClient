@@ -23,6 +23,12 @@
       <ion-item >星级<ion-note item-right>{{order.order_rank}}</ion-note></ion-item>
       <ion-item (click)="showDetail(order.order_comment)">评价<ion-note item-right>显示详情</ion-note></ion-item>
     </ion-list>
+    <ion-list no-border>
+      <ion-list-header>故障照片</ion-list-header>
+      <div padding *ngFor="let url of order.order_broken_img_list">
+        <img [src]="dataService.fileHost + url" alt="">
+      </div>
+    </ion-list>
   </div>
   <div *ngIf="!isLogin">
     <ion-list no-border>

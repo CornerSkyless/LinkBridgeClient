@@ -11,9 +11,9 @@ const urls = {
   'A029401':'192.168.3.114/',
   'testServer':'114.55.136.29/Local-',
   'linkServer':'114.55.233.103/',
-  'office':'10.1.1.201/'
+  'office':'10.1.1.238/'
 };
-const url = urls['linkServer'];
+const url = urls['office'];
 
 const backHost = 'http://' +url+ 'LinkBridgeMed-Api/index.php';
 const FileHost = 'http://' + url + 'LinkBridgeMed-Api/';
@@ -81,7 +81,7 @@ class DataService {
     this.storage.ready().then(() => {
 
       this.storage.get('currentUser').then((val) => {
-        if(val.hasOwnProperty('user_id')){
+        if(val && val.hasOwnProperty('user_id')){
           this.currentUser = val;
           this.isLogin = true;
           this.isFilledData = this.currentUser.isFilledData;

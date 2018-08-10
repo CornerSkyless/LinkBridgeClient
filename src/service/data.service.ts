@@ -13,7 +13,7 @@ const urls = {
   'linkServer':'114.55.233.103/',
   'office':'10.1.1.238/'
 };
-const url = urls['office'];
+const url = urls['linkServer'];
 
 const backHost = 'http://' +url+ 'LinkBridgeMed-Api/index.php';
 const FileHost = 'http://' + url + 'LinkBridgeMed-Api/';

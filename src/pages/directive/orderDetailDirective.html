@@ -70,12 +70,19 @@
       <ion-note style="font-size: 0.8em">客服:{{order.order_service_id}}-{{order.order_service_name}}</ion-note><br>
       <ion-note style="font-size: 0.8em" >{{order.order_confirmed_time}}</ion-note>
     </ion-item>
-    <ion-item *ngIf="orderStatus['待预约']">
+    <ion-item *ngIf="orderStatus['待接受']">
       <ion-icon name="ios-checkmark-circle" style="color: #2ec95c" item-left></ion-icon>
-      <span style="color: #2ec95c">已派工</span>
+      <span style="color: #2ec95c">已派工, 等待接单</span>
       <br>
       <ion-note style="font-size: 0.8em">工程师:{{order.mission_engineer_id}}-{{order.mission_engineer_name}}</ion-note><br>
       <ion-note style="font-size: 0.8em">{{order.order_sent_time}}</ion-note>
+    </ion-item>
+    <ion-item *ngIf="orderStatus['待预约']">
+      <ion-icon name="ios-checkmark-circle" style="color: #2ec95c" item-left></ion-icon>
+      <span style="color: #2ec95c">工程师已接单, 等待预约</span>
+      <br>
+      <ion-note style="font-size: 0.8em">工程师:{{order.mission_engineer_id}}-{{order.mission_engineer_name}}</ion-note><br>
+      <ion-note style="font-size: 0.8em">{{order.order_accepted_time}}</ion-note>
     </ion-item>
     <ion-item *ngIf="orderStatus['待上门服务']">
       <ion-icon name="ios-checkmark-circle" style="color: #2ec95c" item-left></ion-icon>
@@ -83,6 +90,8 @@
       <br>
       <ion-note style="font-size: 0.8em">时间:{{order.order_appoint_with_customer_date}}</ion-note><br>
       <ion-note style="font-size: 0.8em">{{order.mission_appointed_time}}</ion-note>
+      <ion-note style="font-size: 0.8em">预约备注：{{order.mission_appoint_reason}}</ion-note>
+      <ion-note style="font-size: 0.8em">待通知备注：{{order.mission_pause_reason}}</ion-note>
     </ion-item>
     <ion-item *ngIf="orderStatus['待单笔确认']">
       <ion-icon name="ios-checkmark-circle" style="color: #2ec95c" item-left></ion-icon>

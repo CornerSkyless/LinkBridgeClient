@@ -45,7 +45,22 @@
       <ion-item >订单状态<ion-note item-right >{{order.order_status}}</ion-note></ion-item>
       <ion-item >下单时间<ion-note item-right >{{order.order_filled_time}}</ion-note></ion-item>
       <ion-item >医院名称<ion-note item-right >{{order.device_hospital_name}}</ion-note></ion-item>
-
+      <ion-list no-border>
+        <ion-list-header>服务信息</ion-list-header>
+        <ion-item >服务类型<ion-note item-right >{{order.order_service_type}}</ion-note></ion-item>
+      </ion-list>
+      <ion-list no-border>
+        <ion-list-header>备注/情况说明</ion-list-header>
+        <ion-item >{{order.order_broken_detail}}</ion-item>
+      </ion-list>
+      <ion-list no-border >
+        <ion-list-header>预约备注</ion-list-header>
+        <ion-item >{{order.mission_appoint_reason}}</ion-item>
+      </ion-list>
+      <ion-list no-border >
+        <ion-list-header>待通知备注</ion-list-header>
+        <ion-item >{{order.mission_pause_reason}}</ion-item>
+      </ion-list>
 
     </ion-list>
   </div>
